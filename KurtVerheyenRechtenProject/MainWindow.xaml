@@ -1,0 +1,281 @@
+﻿<Window x:Class="KurtVerheyenRechtenProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KurtVerheyenRechtenProject"
+        xmlns:Views="clr-namespace:KurtVerheyenRechtenProject.View"
+        xmlns:mycommand="clr-namespace:KurtVerheyenRechtenProject.Commands"
+        mc:Ignorable="d"
+        Title="Rechten" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" >
+    <Window.Resources>
+        <Style x:Key="TopLevel" x:Name="TopLevel" TargetType="TreeViewItem">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Calibri"></Setter>
+            <Setter Property="Foreground" Value="Blue"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+        <Style x:Key="MidLevel" x:Name="MidLevel" TargetType="TreeViewItem">
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontFamily" Value="Calibri Light"></Setter>
+            <Setter Property="Foreground" Value="Blue"></Setter>
+        </Style>
+        <Style x:Key="LowLevel" x:Name="LowLevel" TargetType="TreeViewItem">
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontFamily" Value="Calibri Light"></Setter>
+            <Setter Property="Foreground" Value="DarkGray"></Setter>
+        </Style>
+        <Style x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+            <Setter Property="SnapsToDevicePixels" Value="False" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="Background" Value="Green"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="3"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <BulletDecorator Background="Transparent" Grid.Column="0" >
+                                <BulletDecorator.Bullet>
+                                    <Border x:Name="Border"
+                                    Width="15"
+                                    Height="15"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    ClipToBounds="True">
+
+                                        <Path Width="8" Height="8" x:Name="CheckMark" HorizontalAlignment="Center" SnapsToDevicePixels="False" StrokeThickness="2"
+                                          Stretch="Fill" Stroke="White" StrokeEndLineCap="Round" StrokeStartLineCap="Round"
+                                          Data="M 0 0 L 8 8 M 0 8 L 8 0">
+                                        </Path>
+                                    </Border>
+                                </BulletDecorator.Bullet>
+                            </BulletDecorator>
+                            <ContentPresenter Grid.Column="2" 
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                    Margin="{TemplateBinding Padding}" 
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                    RecognizesAccessKey="True"/>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="false">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="Orange"></Setter>
+                            </Trigger>
+                            <!--<Trigger Property="CheckBox.IsFocus" Value="false">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="mycommand:MyCommands.CheckboxChecked" Executed="CheckedCommand_Executed" CanExecute="CheckedCommand_CanExecute"></CommandBinding>
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="auto" DockPanel.Dock="Top">
+            <MenuItem Header="Zorg" Name="Zorg">
+                <MenuItem Header="Favorieten" Name="Favorieten">
+                    <MenuItem Header="Contracten" Name="Contracten">
+                        <MenuItem Header="Per basisniveau" Name="PerBasisNiveau"></MenuItem>
+                        <MenuItem Header="Per woonbuurt of dienst" Name="PerWoonbuurt"></MenuItem>
+                        <MenuItem Header="Per campus" Name="PerCampus"></MenuItem>
+                        <MenuItem Header="Ganse instelling" Name="GanseInstelling"></MenuItem>
+                        <MenuItem Header="Functie Ter Heide" Name="FunctieTerHeide"></MenuItem>
+                        <MenuItem Header="Functie VAPH" Name="FunctieVAPH"></MenuItem>
+                        <MenuItem Header="opmerkingen i.v.m. gegevens" Name="OpmerkingenivmGegevens"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Tikklok" Name="Tikklok"></MenuItem>
+                    <MenuItem Header="Stagiairs en vrijwilligers" Name="StagiairsEnVrijwilligers"></MenuItem>
+                    <MenuItem Header="Jaarkalender" Name="Jaarkalender"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Bewonersdossier" Name="Bewonersdossier">
+                    <MenuItem Header="Kine" Name="Kine"></MenuItem>
+                    <MenuItem Header="Ergo" Name="Ergo"></MenuItem>
+                    <MenuItem Header="Logo" Name="Logo"></MenuItem>
+                    <MenuItem Header="Sociaal-administratief" Name="SociaalAdministratief"></MenuItem>
+                    <MenuItem Header="Medisch" Name="Medisch"></MenuItem>
+                    <MenuItem Header="Pedagogische" Name="Pedagogisch"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Teamoverleg" Name="Teamoverleg"></MenuItem>
+                <MenuItem Header="Leefgroepsamenstelling" Name="LeefgroepSamenstelling">
+                    <MenuItem Header="Rapporten" Name="Rapporten">
+                        <MenuItem Header="Per woonbuurt" Name="PerWoonbuurtRapport"></MenuItem>
+                        <MenuItem Header="individueel" Name="Individueel"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Beheer" Name="Beheer">
+                        <MenuItem Header="Simulatie bezetting" Name="SimulatieBezetting"></MenuItem>
+                        <MenuItem Header="THAK tabellen" Name="THAKTabellen"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Thuisverpleging" Name="ThuisVerpleging">
+                    <MenuItem Header="Rapporten" Name="RapportenThuisverpleging">
+                        <MenuItem Header="Historiek" Name="Historiek"></MenuItem>
+                        <MenuItem Header="Per basisniveau" Name="PerBasisNiveauRapport"></MenuItem>
+                        <MenuItem Header="Per woonbuurt" Name="PerWoonbuurtRapportThuis"></MenuItem>
+                        <MenuItem Header="Per externe partner" Name="PerExternePartner"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Beheer" Name="BeheerThuisverpleging">
+                        <MenuItem Header="Thuisverpleging" Name="ThuisVerplegingBeheer"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Protocollen" Name="Protocollen"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="PenO" Name="PenO">
+                <MenuItem Header="Personeelspas" Name="Personeelspas"></MenuItem>
+                <MenuItem Header="Export" Name="Export">
+                    <MenuItem Header="Export" Name="ExportExport"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Logistiek" Name="Logistiek"></MenuItem>
+            <MenuItem Header="Financiën" Name="Financien"></MenuItem>
+            <MenuItem Header="Administratie" Name="Administratie"></MenuItem>
+            <MenuItem Header="ICT" Name="ICT">
+                <MenuItem Header="Beheer" Name="BeheerICT">
+                    <MenuItem Header="Plantype" Name="PlanType"></MenuItem>
+                    <MenuItem Header="Materiaaltype" Name="MateriaalType"></MenuItem>
+                    <MenuItem Header="Software" Name="Software"></MenuItem>
+                    <MenuItem Header="Toner" Name="Toner"></MenuItem>
+                    <MenuItem Header="Gebruikers applicaties" Name="GebruikersApplicatie"></MenuItem>
+                    <MenuItem Header="Gebruikers applicaties toekennen" Name="GebruikersApplicatiesToekennen"></MenuItem>
+                    <MenuItem Header="ICT Contacten" Name="ICTContacten"></MenuItem>
+                    <MenuItem Header="Keuzelijst type" Name="KeuzeLijstType"></MenuItem>
+                    <MenuItem Header="Keuzelijst items" Name="KeuzeLijstItems"></MenuItem>
+                    <MenuItem Header="Drive mappings" Name="DriveMappings"></MenuItem>
+                    <MenuItem Header="IP's" Name="IP">
+                        <MenuItem Header="IP-Ranges" Name="IPRange"></MenuItem>
+                        <MenuItem Header="IP-Subnet" Name="IPSubnet"></MenuItem>
+                        <MenuItem Header="IP-Adressen" Name="IPAdressen"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Checklists" Name="Checklists">
+                        <MenuItem Header="Checklists" Name="ChecklistsChecklist"></MenuItem>
+                        <MenuItem Header="Checklist items" Name="ChecklistItems"></MenuItem>
+                        <MenuItem Header="Checklist groups" Name="ChecklistGroups"></MenuItem>
+                        <MenuItem Header="Checklist procedures" Name="ChecklistProcedure"></MenuItem>
+                        <MenuItem Header="Checklist input" Name="ChecklistInput"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Ligging" Name="Ligging">
+                    <MenuItem Header="Lokalen" Name="Lokalen"></MenuItem>
+                    <MenuItem Header="Lokaalbestemming" Name="LokaalBestemming"></MenuItem>
+                    <MenuItem Header="Plannen" Name="Plannen"></MenuItem>
+                    <MenuItem Header="Hotspots" Name="Hotspots"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Inventaris" Name="Inventaris">
+                    <MenuItem Header="Computer" Name="Computer"></MenuItem>
+                    <MenuItem Header="Printer" Name="Printer"></MenuItem>
+                    <MenuItem Header="Randapparatuur" Name="Randapparatuur"></MenuItem>
+                    <MenuItem Header="Server" Name="Server"></MenuItem>
+                    <MenuItem Header="Switch" Name="Switch"></MenuItem>
+                    <MenuItem Header="DVR" Name="DVR"></MenuItem>
+                    <MenuItem Header="Bewakingscamera" Name="Bewakingscamera"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Aankoopgegevens" Name="Aankoopgegevens">
+                    <MenuItem Header="Aankoopfacturen" Name="Aankoopfacturen"></MenuItem>
+                    <MenuItem Header="Leveranciers" Name="Leveranciers"></MenuItem>
+                    <MenuItem Header="Gemeenten" Name="Gemeenten"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Rechten" Name="Rechten">
+                    <MenuItem Header="Rechten per functiegroep" Name="RechtenPerFunctieGroep"></MenuItem>
+                    <MenuItem Header="AD rechten bepalen" Name="ADRechtenBepalen"></MenuItem>
+                    <MenuItem Header="Gebruikers" Name="Gebruikers"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Helpdesk" Name="Helpdesk">
+                    <MenuItem Header="Helpdesk probleemsoort" Name="HelpdeskProbleemsoort"></MenuItem>
+                    <MenuItem Header="Nieuw helpdesk ticket" Name="NieuwHelpdeskTicket"></MenuItem>
+                    <MenuItem Header="Mijn helpdesk tickets" Name="MijnHelpdeskTicket"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="ICT Tools" Name="ICTTools">
+                    <MenuItem Header="AD tools" Name="ADTools">
+                        <MenuItem Header="AD tools 1" Name="ADTools1"></MenuItem>
+                        <MenuItem Header="AD tools 2" Name="ADTools2"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Remote" Name="Remote">
+                        <MenuItem Header="Remote Installed printers" Name="RemotePrinters"></MenuItem>
+                        <MenuItem Header="Remote Installed mapped drives" Name="RemoteMappedDrives"></MenuItem>
+                        <MenuItem Header="Remote shared folders"  Name="RemoteSharedFolders"></MenuItem>
+                        <MenuItem Header="Remote installed software"  Name="RemoteSoftware"></MenuItem>
+                        <MenuItem Header="Remote CPU info"  Name="RemoteCPUInfo"></MenuItem>
+                        <MenuItem Header="Remote desktop info" Name="RemoteDesktopInfo"></MenuItem>
+                        <MenuItem Header="Remote NIC settings" Name="RemoteNICSettings"></MenuItem>
+                        <MenuItem Header="Remote onboard divices" Name="RemoteOnboardDivices"></MenuItem>
+                        <MenuItem Header="Remote OS info" Name="RemoteOSInfo"></MenuItem>
+                        <MenuItem Header="Remote memory info" Name="RemoteMemoryInfo"></MenuItem>
+                        <MenuItem Header="Remote printer config info" Name="RemotePrinterConfigInfo"></MenuItem>
+                        <MenuItem Header="Remote computersystem info" Name="RemoteComputersystemInfo"></MenuItem>
+                        <MenuItem Header="Remote win32 processen" Name="RemoteWin32Processen"></MenuItem>
+                        <MenuItem Header="Remote user accounts" Name="RemoteUserAccounts"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="TH-sync"  Name="THSync"></MenuItem>
+                    <MenuItem Header="Back-up databases" Name="BackupDatabases"></MenuItem>
+                    <MenuItem Header="Restore databases" Name="RestoreDatabase"></MenuItem>
+                    <MenuItem Header="Clean exceptions" Name="CleanExceptions"></MenuItem>
+                    <MenuItem Header="Clean logs" Name="CleanLogs"></MenuItem>
+                    <MenuItem Header="Ping" Name="Ping">
+                        <MenuItem Header="Een bepaald aantal keren pingen" Name="AantalKeerPing"></MenuItem>
+                        <MenuItem Header="Ping-t" Name="PingT"></MenuItem>
+                        <MenuItem Header="Een bepaalde tijd pingen" Name="BepaaldeTijdPingen"></MenuItem>
+                        <MenuItem Header="Een bepaalde range pingen" Name="BepaaldeRangePingen"></MenuItem>
+                    </MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Applicaties" Name="Applicaties">
+                <MenuItem Header="Mijn applicaties" Name="MijnApplicaties">
+                    <MenuItem Header="Word" Name="Word"></MenuItem>
+                    <MenuItem Header="Excel" Name="Excel"></MenuItem>
+                    <MenuItem Header="Access" Name="Access"></MenuItem>
+                    <MenuItem Header="Rekenmachine" Name="Rekenmachine"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Mijn snelkoppelingen" Name="MijnSnelkoppeling">
+                    <MenuItem Header="Snelkoppeling 1" Name="Snelkoppeling1"></MenuItem>
+                    <MenuItem Header="Snelkoppeling 2" Name="Snelkoppeling2"></MenuItem>
+                    <MenuItem Header="Snelkoppeling 3" Name="Snelkoppeling3"></MenuItem>
+                    <MenuItem Header="Snelkoppeling 4" Name="Snelkoppeling4"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Mijn snelkoppelingen beheer" Name="MijnSnelkoppelingBeheer"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" Name="Help"></MenuItem>
+        </Menu>
+        <Grid Name="grdMain">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Button Name="btnSelectAllRights" Margin="5" Click="btnSelectAllRights_Click">Check/Uncheck alle rechten</Button>
+                <Button Name="btnSelectAllButtons" Margin="5" Click="btnSelectAllButtons_Click">Check/Uncheck alle knoppen</Button>
+                <Button Name="btnCopyAllRights" Margin="5" Click="btnCopyAllRights_Click">Kopieer alle rechten</Button>
+                <Button Name="btnPasteAllRights" Margin="5" Click="btnPasteAllRights_Click" IsEnabled="False">Plak alle rechten</Button>
+                <Button Name="btnLoadRightsOfGroup" Margin="5" Click="btnLoadRightsOfGroup_Click">Load all rights of group</Button>
+                <Button Name="btnSaveRightsOfGroup" Margin="5" Click="btnSaveRightsOfGroup_Click">Save all rights of group</Button>
+                <Button Name="btnOpenUsers" Margin="5" Click="btnOpenUsers_Click">OpenUsers</Button>
+                <Button Name="btnOpenGroups" Margin="5" Click="btnOpenGroups_Click">OpenGroups</Button>
+            </WrapPanel>
+            <TreeView Name="treeMenu" Margin="10" Grid.Column="0" Grid.Row="2"></TreeView>
+            
+            <TreeView Name="treeMenuu" Margin="10" Grid.Column="2" Grid.Row="2" Visibility="Hidden"></TreeView>
+
+            <Views:ucUser x:Name="ucUserView" Grid.Column="2" Grid.Row="5" Visibility="Hidden"></Views:ucUser>
+            <Views:ucGroup x:Name="ucGroupView" Grid.Column="2" Grid.Row="5" Visibility="Hidden" MouseMove="ucGroupView_MouseMove"></Views:ucGroup>
+        </Grid>
+
+    </DockPanel>
+</Window>

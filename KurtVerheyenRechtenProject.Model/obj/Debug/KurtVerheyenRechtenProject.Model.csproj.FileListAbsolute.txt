@@ -1,0 +1,4 @@
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.Model\bin\Debug\KurtVerheyenRechtenProject.Model.dll
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.Model\bin\Debug\KurtVerheyenRechtenProject.Model.pdb
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.Model\obj\Debug\KurtVerheyenRechtenProject.Model.dll
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.Model\obj\Debug\KurtVerheyenRechtenProject.Model.pdb

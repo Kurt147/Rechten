@@ -1,0 +1,10 @@
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\bin\Debug\KurtVerheyenRechtenProject.DAL.dll.config
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\bin\Debug\KurtVerheyenRechtenProject.DAL.dll
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\bin\Debug\KurtVerheyenRechtenProject.DAL.pdb
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\bin\Debug\KurtVerheyenRechtenProject.Model.dll
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\bin\Debug\KurtVerheyenRechtenProject.Model.pdb
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\obj\Debug\KurtVerheyenRechtenProject.DAL.csprojResolveAssemblyReference.cache
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\obj\Debug\KurtVerheyenRechtenProject.DAL.Properties.Resources.resources
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\obj\Debug\KurtVerheyenRechtenProject.DAL.csproj.GenerateResource.Cache
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\obj\Debug\KurtVerheyenRechtenProject.DAL.dll
+D:\Avondschool\WPF\Project\KurtVerheyenRechtenProject\KurtVerheyenRechtenProject.DAL\obj\Debug\KurtVerheyenRechtenProject.DAL.pdb
